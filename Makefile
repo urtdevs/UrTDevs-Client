@@ -3,7 +3,7 @@
 #
 # GNU Make required
 #
-
+#//WARNING DO NOT USE -O3 FOR Urban Terror it CAN cause hitching on certain setups
 COMPILE_PLATFORM=$(shell uname|sed -e s/_.*//|tr '[:upper:]' '[:lower:]'|sed -e 's/\//_/g')
 
 COMPILE_ARCH=$(shell uname -m | sed -e s/i.86/i386/)
@@ -299,18 +299,18 @@ ifneq (,$(findstring "$(PLATFORM)", "linux" "gnu_kfreebsd" "kfreebsd-gnu"))
     -pipe -DUSE_ICON
   CLIENT_CFLAGS += $(SDL_CFLAGS)
 
-  OPTIMIZEVM = -O3 -funroll-loops -fomit-frame-pointer
+  OPTIMIZEVM = -O2 -funroll-loops -fomit-frame-pointer
   OPTIMIZE = $(OPTIMIZEVM) -ffast-math
 
   ifeq ($(ARCH),x86_64)
-    OPTIMIZEVM = -O3 -fomit-frame-pointer -funroll-loops \
+    OPTIMIZEVM = -O2 -fomit-frame-pointer -funroll-loops \
       -falign-loops=2 -falign-jumps=2 -falign-functions=2 \
       -fstrength-reduce
     OPTIMIZE = $(OPTIMIZEVM) -ffast-math
     HAVE_VM_COMPILED = true
   else
   ifeq ($(ARCH),i386)
-    OPTIMIZEVM = -O3 -march=i586 -fomit-frame-pointer \
+    OPTIMIZEVM = -O2 -march=i586 -fomit-frame-pointer \
       -funroll-loops -falign-loops=2 -falign-jumps=2 \
       -falign-functions=2 -fstrength-reduce
     OPTIMIZE = $(OPTIMIZEVM) -ffast-math
@@ -396,7 +396,7 @@ ifeq ($(PLATFORM),darwin)
 
   ifeq ($(ARCH),ppc)
     BASE_CFLAGS += -arch ppc -faltivec -mmacosx-version-min=10.2
-    OPTIMIZEVM += -O3
+    OPTIMIZEVM += -O2
   endif
   ifeq ($(ARCH),ppc64)
     BASE_CFLAGS += -arch ppc64 -faltivec -mmacosx-version-min=10.2

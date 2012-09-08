@@ -21,14 +21,7 @@ UrtDevs client v4.0 (ioquake3 svn 2306)
   use ikalizer. Because of this unneccessary controversy, all builds released
   by the maintainers will have the sound removal feature completely disabled.
   If you want it, compile it in yourself!
-  It has been rumored that the leagues are fed up with "souped up clients"
-  and will possibly start banning anyone suspected of using anything other
-  than the "official" builds. If such rule is in place, follow it! Do not use
-  this client. We are not responsible if you get banned for using this.
-  Given that, we hope these admins will realize that pure skill overrides
-  any/all usage of a custom client and dismissing this particular one as
-  "cheating" without a full understanding of how it works is, to put it as
-  lightly as possible, f***ing ignorant. 
+ 
   
 * Added cvars:
   - s_envSoundEnable [0|1] -- to enable or disable ambient background sounds.
@@ -38,6 +31,12 @@ UrtDevs client v4.0 (ioquake3 svn 2306)
 * For those familiar with SACC, the defaults in UrtDevs client have been slightly increased.
   The default values are much higher but you may still tweak them to lesser
   values. YMMV depending on the throughput of your connection.
+  as of version 4.0 all the networking related cvars have been RENAMED THIS EFFECTS 4.1.1 AND 4.2.1 use the new cvars or you won't see any effect!
+  
+  *New Networking settings for better performance and more hits
+   *net_maxpackets 30-125 (default 62) relates directly to frame rate if you get framerates BELOW this value adjust it accordingly else if you get a consistent 90/125FPS you may increse it 
+   *net_packetdup  0-3    (default 1) setting it to 0 has been reported to improve things but only if you have a PERFECT CONNECTION and pingless then 50MS
+   *net_rate 25000-125000 (Bits persecond) (default 125000 has no effect on bandwith usage thats related to net_mapackets and net_packetdup Probly should be locked to 125000
 
 * What you can expect to hear / not hear:
   dmaHD greatly enhances sound quality and precision, and also adds
@@ -45,16 +44,19 @@ UrtDevs client v4.0 (ioquake3 svn 2306)
   but is cross-platform. You will NOT hear your own player model breathe,
   swim, or use med-kit!!! But you can hear friends/foes do all such things.
 
-* Be sure to direct the haters and accusers to our github so they can see
-  that you're not wallhacking.
-
+*addional notes
+makefile currectly defaults to -O2 -mmx -msse -msse2 -msse3 if you'r pc is old and suck remove the *msse* and recompile
 * respect!
-  - Frozen Sand: For the mod we all love.
+  - Pugbot and the community 
+  - strata for doing most of the work 
   - SACC: Slackin's Advanced Competitive Client [urtdevs]
   - dmaHD: p5ych0runn3r of apd 
+  
+ *haters can eat bag of baby dick's: if anyone has a problem with this client go bitch at frozensand for not knowing what the f*** they are doing 
 
 * current maintainers of UrtDevs client
-  - rjc862003
-  - slackin
+  - rjc862003(terrible coder, channle troll, idea bank maintainer,)
+  - slackin(sacc transparnet console and input leetness)
   - kbar(website)
-  - SudoKing [SudoKing@github]
+  - SudoKing [SudoKing@github] (coder, maintainer,QVM HAX0R)
+  - TheRick servers and the occsional random banning 

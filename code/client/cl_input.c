@@ -700,7 +700,7 @@ qboolean CL_ReadyToSendPacket( void ) {
 		return qtrue;
 	}
 
-#ifdef USE_SACC
+
 	//set defaults for sacc
 	if ( net_maxpackets->integer < 15 ) {
 		Cvar_Set( "net_maxpackets", "62" );
@@ -716,23 +716,7 @@ qboolean CL_ReadyToSendPacket( void ) {
 
 	return qtrue;
 	}
-#else
-	//set sane defaults for non-sacc for 4.2 we don't care about this because the qvm enforces it anyway 
-	if ( cl_maxpackets->integer < 15 ) {
-		Cvar_Set( "cl_maxpackets", "125" );
-	} else if ( cl_maxpackets->integer > 125 ) {
-		Cvar_Set( "cl_maxpackets", "125" );
-		}
-		oldPacketNum = (clc.netchan.outgoingSequence - 1) & PACKET_MASK;
-	     delta = cls.realtime -  cl.outPackets[ oldPacketNum ].p_realtime;
-	      if ( delta < 1000 / cl_maxpackets->integer ) {
-		// the accumulated commands will go out in the next packet
-		return qfalse;
-	}
 
-	return qtrue;
-}
-#endif
 /*
 ===================
 CL_WritePacket

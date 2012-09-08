@@ -1394,13 +1394,10 @@ void SV_UserinfoChanged( client_t *cl ) {
 		if (strlen(val)) {
 			i = atoi(val);
 			cl->net_rate = i;
-#ifdef USE_SACC
-			if (cl->net_rate < 25000) {
+//fucking strata and his ifdef's
+			if (cl->net_rate < 8000) {
 				cl->net_rate = 125000;
-#else
-			if (cl->net_rate < 25000) {
-				cl->net_rate = 25000;
-#endif
+
 			} else if (cl->net_rate > 125000) {
 				cl->net_rate = 125000;
 			}

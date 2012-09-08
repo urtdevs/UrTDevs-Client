@@ -85,7 +85,6 @@ cvar_t	*cl_mouseAccelOffset;
 cvar_t	*cl_mouseAccelStyle;
 cvar_t	*cl_showMouseRate;
 
-//add newcvars for sacc
 cvar_t  *net_maxpackets;
 cvar_t  *net_packetdup;
 cvar_t  *net_rate;
@@ -135,8 +134,6 @@ vm_t				*cgvm;
 cvar_t *cl_auth_engine;
 cvar_t *cl_auth;
 cvar_t *authc;
-cvar_t  *cl_packetdup;
-cvar_t  *cl_maxpackets;
 #endif
 
 // Structure containing functions exported from refresh DLL
@@ -3601,17 +3598,9 @@ void CL_Init( void ) {
 	cl_pitchspeed = Cvar_Get ("cl_pitchspeed", "140", CVAR_ARCHIVE);
 	cl_anglespeedkey = Cvar_Get ("cl_anglespeedkey", "1.5", 0);
 
-#ifdef USE_SACC
 	net_maxpackets = Cvar_Get ("net_maxpackets", "62", CVAR_ARCHIVE );
 	net_packetdup = Cvar_Get ("net_packetdup", "1", CVAR_ARCHIVE );
 	net_rate = Cvar_Get ("net_rate", "125000", CVAR_ARCHIVE );
-
-#else
-	cl_maxpackets = Cvar_Get ("cl_maxpackets", "42", CVAR_ARCHIVE );
-#endif
-
-	cl_packetdup = Cvar_Get ("cl_packetdup", "1", CVAR_ARCHIVE );
-
 	cl_run = Cvar_Get ("cl_run", "1", CVAR_ARCHIVE);
 	cl_sensitivity = Cvar_Get ("sensitivity", "5", CVAR_ARCHIVE);
 	cl_mouseAccel = Cvar_Get ("cl_mouseAccel", "0", CVAR_ARCHIVE);
@@ -3693,11 +3682,10 @@ void CL_Init( void ) {
 	authc = Cvar_Get("authc", "0", CVAR_TEMP | CVAR_USERINFO);
 #endif
 	// userinfo
-	#ifdef USE_SACC
-	Cvar_Get ("cl_rate", "125000", CVAR_USERINFO | CVAR_ARCHIVE );
-	#else
+	Cvar_Get ("net_rate", "125000", CVAR_USERINFO | CVAR_ARCHIVE );
 	Cvar_Get ("rate", "125000", CVAR_USERINFO | CVAR_ARCHIVE );
-	#endif
+	Cvar_Get ("net_maxpackets", "62", CVAR_USERINFO | CVAR_ARCHIVE );
+	Cvar_Get ("net_packetdup", "1", CVAR_USERINFO | CVAR_ARCHIVE );
 	Cvar_Get ("name", "UnnamedPlayer", CVAR_USERINFO | CVAR_ARCHIVE );
 	Cvar_Get ("snaps", "20", CVAR_USERINFO | CVAR_ARCHIVE );
 	Cvar_Get ("model", "sarge", CVAR_USERINFO | CVAR_ARCHIVE );
@@ -3739,7 +3727,7 @@ void CL_Init( void ) {
 	//  This might work on rates lower than 25000, but for safety's sake, we'll
 	//  just demand it. Who doesn't have at least a DSL line now, anyhow? If
 	//  you don't, you don't need VoIP.  :)
-	if ((cl_voip->integer) && (Cvar_VariableIntegerValue("rate") < 25000)) {
+	if ((cl_voip->integer) && (Cvar_VariableIntegerValue("net_rate") < 25000)) {
 		Com_Printf(S_COLOR_YELLOW "Your network rate is too slow for VoIP.\n");
 		Com_Printf("Set 'Data Rate' to 'LAN/Cable/xDSL' in 'Setup/System/Network' and restart.\n");
 		Com_Printf("Until then, VoIP is disabled.\n");
