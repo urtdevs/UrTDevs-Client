@@ -3,7 +3,7 @@
 #
 # GNU Make required
 #
-#//WARNING DO NOT USE -O3 FOR Urban Terror it CAN cause hitching on certain setups
+#//WARNING DO NOT USE -O3 FOR Urban Terror it CAN cause hitching on certain setups flags default to -O2 -mmx -msse -msse2 -msse3
 COMPILE_PLATFORM=$(shell uname|sed -e s/_.*//|tr '[:upper:]' '[:lower:]'|sed -e 's/\//_/g')
 
 COMPILE_ARCH=$(shell uname -m | sed -e s/i.86/i386/)
