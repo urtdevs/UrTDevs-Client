@@ -24,7 +24,7 @@ USE_MUMBLE=1
 # Urban Terror 4.2 (set this to 0 for 4.1.x)
 URT_4_2=0
 
-# networking defaults on new defaults off old defaults we still use net_rate, net_maxpackets net_packetdup either way now 
+# networking defaults ON=new defaults OFF=old defaults we still use net_rate, net_maxpackets net_packetdup either way now 
 USE_SACC=1
 
 # dmaHD HRTF Sound System by p5yc0runn3r
