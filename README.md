@@ -4,8 +4,7 @@ UrtDevs_client
 UrtDevs client v4.0 (ioquake3 svn 2306)
 
 * UrtDevs client is a customized version of ioquake3 for Urban Terror 4.x
-  by Frozen Sand. It includes enhanced sound hacks that may or may not be
-  accepted for league use.
+  by Frozen Sand. It includes enhancements that may or may not cause people to ragecry
 
 * More specifically, UrtDevs client is bleeding edge ioquake3 with SACC and dmaHD.
   Also, there are additional tweaks that allow you to remove ambient background
