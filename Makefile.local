@@ -30,6 +30,4 @@ USE_SACC=1
 # dmaHD HRTF Sound System by p5yc0runn3r
 USE_DMAHD=1
 
-# Enable ability to remove background noises.
-# This feature is somewhat controversial and will now be removed by default.
-USE_SOUNDHAX=0
+#Sound hax completely removed unless you are a 1337 coderz 

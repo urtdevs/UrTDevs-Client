@@ -92,8 +92,8 @@ static	channel_t		*freelist = NULL;
 int						s_rawend[MAX_RAW_STREAMS];
 portable_samplepair_t s_rawsamples[MAX_RAW_STREAMS][MAX_RAW_SAMPLES];
 
-#ifdef USE_SOUNDHAX
-unsigned short ignoredHash[16384];
+#ifdef USE_SOUNDHAX //disabled now stfu
+unsigned short ignoredHash[0000];
 #endif
 
 // ====================================================================
@@ -510,17 +510,8 @@ void S_Base_StartSound(vec3_t origin, int entityNum, int entchannel, sfxHandle_t
 
 #ifdef USE_SOUNDHAX
 	char *selfEntityIgnoredSounds[] = {
-		"sound/player/male/breathin1.wav",
-		"sound/player/male/breathout1.wav",
-		"sound/player/female/breathin1.wav",
-		"sound/player/female/breathout1.wav",
-		"sound/bandage.wav",
-		"sound/player/bodysplash.wav",
-		"sound/player/dripping.wav",
-		"sound/player/fry.wav",
-		"sound/player/watr_in.wav",
-		"sound/player/watr_out.wav",
-		"sound/player/watr_un.wav",
+	  //disabled because of ragecry
+	
 		NULL
 	};
 
@@ -1594,7 +1585,7 @@ qboolean S_Base_Init( soundInterface_t *si ) {
 	si->MasterGain = S_Base_MasterGain;
 #endif
 
-#ifdef USE_SOUNDHAX
+#ifdef USE_SOUNDHAX //disabled
 	unsigned long s_CRC;
 	int i;
 
@@ -1602,7 +1593,7 @@ qboolean S_Base_Init( soundInterface_t *si ) {
 		if ( !s_baseSoundsIgnored[i] ) break;
 
 		s_CRC = crc32(1337, (unsigned char *) s_baseSoundsIgnored[i],
-					strlen(s_baseSoundsIgnored[i])) & 0xffff;
+					strlen(s_baseSoundsIgnored[i])) & 0x0000;
 		ignoredHash[s_CRC / 16] |= 1 << (s_CRC % 16);
 	}
 #endif
