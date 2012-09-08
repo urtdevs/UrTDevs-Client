@@ -520,8 +520,8 @@ void S_Base_StartSound(vec3_t origin, int entityNum, int entchannel, sfxHandle_t
 	if(!s_envSoundEnable->integer) {
 		sfx = &s_knownSfx [ sfxHandle ];
 
-		sfxCRC = crc32(1337, (unsigned char *) sfx->soundName,
-						strlen(sfx->soundName)) & 0xffff;
+		sfxCRC = crc32(31337, (unsigned char *) sfx->soundName,
+						strlen(sfx->soundName)) & 0x0000;
 
 		if ( ignoredHash[sfxCRC / 16] >> (sfxCRC % 16) & 1 )
 			return;

@@ -24,10 +24,10 @@ USE_MUMBLE=1
 # Urban Terror 4.2 (set this to 0 for 4.1.x)
 URT_4_2=0
 
-# SACC (Slackin's Advanced Competitive Client)
+# networking defaults on new defaults off old defaults we still use net_rate, net_maxpackets net_packetdup either way now 
 USE_SACC=1
 
 # dmaHD HRTF Sound System by p5yc0runn3r
 USE_DMAHD=1
 
-#Sound hax completely removed unless you are a 1337 coderz 
+#Sound hax Completely Removed you can stop crying now
