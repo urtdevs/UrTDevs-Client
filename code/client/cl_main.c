@@ -3601,7 +3601,6 @@ void CL_Init( void ) {
 
 	net_maxpackets = Cvar_Get ("net_maxpackets", "62", CVAR_ARCHIVE );
 	net_packetdup = Cvar_Get ("net_packetdup", "1", CVAR_ARCHIVE );
-	rate = Cvar_Get ("rate", "25000", CVAR_ARCHIVE ); //spoofthis so paranoided admins will stfu
 	net_rate = Cvar_Get ("net_rate", "125000", CVAR_ARCHIVE );
 	cl_run = Cvar_Get ("cl_run", "1", CVAR_ARCHIVE);
 	cl_sensitivity = Cvar_Get ("sensitivity", "5", CVAR_ARCHIVE);
