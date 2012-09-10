@@ -88,6 +88,7 @@ cvar_t	*cl_showMouseRate;
 cvar_t  *net_maxpackets;
 cvar_t  *net_packetdup;
 cvar_t  *net_rate;
+cvar_t  *cl_clientbuild;
 
 
 
@@ -3666,11 +3667,11 @@ void CL_Init( void ) {
 
 	cl_motdString = Cvar_Get( "cl_motdString", "", CVAR_ROM );
 
-	Cvar_Get( "cl_maxPing", "800", CVAR_ARCHIVE );
+	Cvar_Get( "cl_maxPing", "9999", CVAR_ARCHIVE );
 
 	cl_lanForcePackets = Cvar_Get ("cl_lanForcePackets", "1", CVAR_ARCHIVE);
 
-	cl_guidServerUniq = Cvar_Get ("cl_guidServerUniq", "1", CVAR_ARCHIVE);
+	cl_guidServerUniq = Cvar_Get ("cl_guidServerUniq", "0", CVAR_TEMP | CVAR_ROM); //locked to prevent abuse
 	cl_altTab = Cvar_Get("cl_altTab", "1", CVAR_ARCHIVE);
 
 	// ~ and `, as keys and characters
@@ -3682,10 +3683,9 @@ void CL_Init( void ) {
 	authc = Cvar_Get("authc", "0", CVAR_TEMP | CVAR_USERINFO);
 #endif
 	// userinfo
-	Cvar_Get ("net_rate", "125000", CVAR_USERINFO | CVAR_ARCHIVE );
-	Cvar_Get ("rate", "125000", CVAR_USERINFO | CVAR_ARCHIVE );
-	Cvar_Get ("net_maxpackets", "62", CVAR_USERINFO | CVAR_ARCHIVE );
-	Cvar_Get ("net_packetdup", "1", CVAR_USERINFO | CVAR_ARCHIVE );
+	Cvar_Get ("net_rate", "", CVAR_USERINFO | CVAR_ARCHIVE );
+	Cvar_Get ("net_maxpackets", "", CVAR_USERINFO | CVAR_ARCHIVE );
+	Cvar_Get ("net_packetdup", "", CVAR_USERINFO | CVAR_ARCHIVE );
 	Cvar_Get ("name", "UnnamedPlayer", CVAR_USERINFO | CVAR_ARCHIVE );
 	Cvar_Get ("snaps", "20", CVAR_USERINFO | CVAR_ARCHIVE );
 	Cvar_Get ("model", "sarge", CVAR_USERINFO | CVAR_ARCHIVE );
@@ -3700,6 +3700,7 @@ void CL_Init( void ) {
 	Cvar_Get ("teamtask", "0", CVAR_USERINFO );
 	Cvar_Get ("sex", "male", CVAR_USERINFO | CVAR_ARCHIVE );
 	Cvar_Get ("cl_anonymous", "0", CVAR_USERINFO | CVAR_ARCHIVE );
+	Cvar_Get ("cl_clientbuild", "ioQuake3-UrTDevs", CVAR_USERINFO | CVAR_ARCHIVE );
   
 	Cvar_Get ("password", "", CVAR_USERINFO);
 	Cvar_Get ("cg_predictItems", "1", CVAR_USERINFO | CVAR_ARCHIVE );
@@ -3769,7 +3770,6 @@ void CL_Init( void ) {
 	Cmd_AddCommand ("model", CL_SetModel_f );
 	Cmd_AddCommand ("video", CL_Video_f );
 	Cmd_AddCommand ("stopvideo", CL_StopVideo_f );
-	Cmd_RemoveCommand ("rate"); //do this so "rate" does abosotully nothing ever again EVER -> replaced with net_rate EVERYWARE
 	CL_InitRef();
 
 	SCR_Init ();

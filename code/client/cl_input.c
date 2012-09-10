@@ -280,16 +280,10 @@ cvar_t	*cl_pitchspeed;
 cvar_t	*cl_run;
 
 cvar_t	*cl_anglespeedkey;
-#ifdef USE_SACC
 cvar_t  *net_maxpackets;
 cvar_t  *net_packetdup;
 cvar_t  *net_rate;
-cvar_t  *cl_maxpackets; //WARNING HACK
-cvar_t  *cl_packetdup; //WARNING HACK 
-#else
-cvar_t  *cl_maxpackets;
-cvar_t  *cl_packetdup;
-#endif
+
 
 /*
 ================

@@ -431,10 +431,6 @@ extern	cvar_t	*cl_autoRecordDemo;
 extern  cvar_t  *cl_altTab;
 extern	cvar_t	*cl_consoleKeys;
 
-#ifdef USE_SOUNDHAX
-extern  cvar_t	*s_envSoundEnable;
-#endif
-
 #ifdef USE_MUMBLE
 extern	cvar_t	*cl_useMumble;
 extern	cvar_t	*cl_mumbleScale;
