@@ -775,7 +775,6 @@ void CL_WritePacket( void ) {
 	// we want to send all the usercmds that were generated in the last
 	// few packet, so even if a couple packets are dropped in a row,
 	// all the cmds will make it to the server
-#ifdef USE_SACC
 	if ( net_packetdup->integer < 0 ) {
 		Cvar_Set( "net_packetdup", "1" );
 	} else if ( net_packetdup->integer > 3 ) {
@@ -787,19 +786,7 @@ void CL_WritePacket( void ) {
 		count = MAX_PACKET_USERCMDS;
 		Com_Printf("MAX_PACKET_USERCMDS\n");
 	}
-#else
-	if ( cl_packetdup->integer < 0 ) {
-		Cvar_Set( "cl_packetdup", "1" );
-	} else if ( cl_packetdup->integer > 3 ) {
-		Cvar_Set( "cl_packetdup", "3" );
-		}
-	oldPacketNum = (clc.netchan.outgoingSequence - 1 - cl_packetdup->integer) & PACKET_MASK;
-	count = cl.cmdNumber - cl.outPackets[ oldPacketNum ].p_cmdNumber;
-	if ( count > MAX_PACKET_USERCMDS ) {
-		count = MAX_PACKET_USERCMDS;
-		Com_Printf("MAX_PACKET_USERCMDS\n");
-	}
-#endif
+
 #ifdef USE_VOIP
 	if (clc.voipOutgoingDataSize > 0)
 	{

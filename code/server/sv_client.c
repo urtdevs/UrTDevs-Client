@@ -1394,7 +1394,6 @@ void SV_UserinfoChanged( client_t *cl ) {
 		if (strlen(val)) {
 			i = atoi(val);
 			cl->net_rate = i;
-//fucking strata and his ifdef's
 			if (cl->net_rate < 8000) {
 				cl->net_rate = 125000;
 
@@ -1402,11 +1401,7 @@ void SV_UserinfoChanged( client_t *cl ) {
 				cl->net_rate = 125000;
 			}
 		} else {
-#ifdef USE_SACC
-			cl->net_rate = 125000;
-#else
-			cl->net_rate = ;25000
-#endif
+
 		}
 	}
 	val = Info_ValueForKey (cl->userinfo, "handicap");

@@ -3601,6 +3601,7 @@ void CL_Init( void ) {
 
 	net_maxpackets = Cvar_Get ("net_maxpackets", "62", CVAR_ARCHIVE );
 	net_packetdup = Cvar_Get ("net_packetdup", "1", CVAR_ARCHIVE );
+	rate = Cvar_Get ("rate", "25000", CVAR_ARCHIVE ); //spoofthis so paranoided admins will stfu
 	net_rate = Cvar_Get ("net_rate", "125000", CVAR_ARCHIVE );
 	cl_run = Cvar_Get ("cl_run", "1", CVAR_ARCHIVE);
 	cl_sensitivity = Cvar_Get ("sensitivity", "5", CVAR_ARCHIVE);
@@ -3671,7 +3672,7 @@ void CL_Init( void ) {
 
 	cl_lanForcePackets = Cvar_Get ("cl_lanForcePackets", "1", CVAR_ARCHIVE);
 
-	cl_guidServerUniq = Cvar_Get ("cl_guidServerUniq", "0", CVAR_TEMP | CVAR_ROM);
+	cl_guidServerUniq = Cvar_Get ("cl_guidServerUniq", "1", CVAR_ARCHIVE);
 	cl_altTab = Cvar_Get("cl_altTab", "1", CVAR_ARCHIVE);
 
 	// ~ and `, as keys and characters
@@ -3684,6 +3685,7 @@ void CL_Init( void ) {
 #endif
 	// userinfo
 	Cvar_Get ("net_rate", "", CVAR_USERINFO | CVAR_ARCHIVE );
+	Cvar_Get ("rate", "25000", CVAR_USERINFO | CVAR_ARCHIVE ); //spoof this so parnoided admins will stfu
 	Cvar_Get ("net_maxpackets", "", CVAR_USERINFO | CVAR_ARCHIVE );
 	Cvar_Get ("net_packetdup", "", CVAR_USERINFO | CVAR_ARCHIVE );
 	Cvar_Get ("name", "UnnamedPlayer", CVAR_USERINFO | CVAR_ARCHIVE );
@@ -3700,7 +3702,7 @@ void CL_Init( void ) {
 	Cvar_Get ("teamtask", "0", CVAR_USERINFO );
 	Cvar_Get ("sex", "male", CVAR_USERINFO | CVAR_ARCHIVE );
 	Cvar_Get ("cl_anonymous", "0", CVAR_USERINFO | CVAR_ARCHIVE );
-	Cvar_Get ("cl_clientbuild", "ioQuake3-UrTDevs", CVAR_USERINFO | CVAR_ARCHIVE );
+	Cvar_Get ("cl_clientbuild", "ioQuake3-UrTDevs", CVAR_USERINFO | CVAR_ROM);
   
 	Cvar_Get ("password", "", CVAR_USERINFO);
 	Cvar_Get ("cg_predictItems", "1", CVAR_USERINFO | CVAR_ARCHIVE );

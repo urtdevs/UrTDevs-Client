@@ -3083,30 +3083,13 @@ static void UI_Update(const char *name) {
  	if (Q_stricmp(name, "ui_SetName") == 0) {
 		trap_Cvar_Set( "name", UI_Cvar_VariableString("ui_Name"));
  	} else if (Q_stricmp(name, "ui_setRate") == 0) {
-		float rate = trap_Cvar_VariableValue("rate");
-#ifdef USE_SACC
-		if (rate >= 25000) {
-			trap_Cvar_Set("cl_maxpackets", "125");
-			trap_Cvar_Set("cl_packetdup", "0");
+		float rate = trap_Cvar_VariableValue("net_rate");
+		if (net_rate >= 25000) {
+			trap_Cvar_Set("net_maxpackets", "125");
+			trap_Cvar_Set("net_packetdup", "0");
 		} else if (rate >= 10000) {
-			trap_Cvar_Set("cl_maxpackets", "30");
-			trap_Cvar_Set("cl_packetdup", "1");		// favor less prediction errors when there's packet loss
-#else
-		if (rate >= 5000) {
-			trap_Cvar_Set("cl_maxpackets", "30");
-			trap_Cvar_Set("cl_packetdup", "1");
-		} else if (rate >= 4000) {
-			trap_Cvar_Set("cl_maxpackets", "15");
-			trap_Cvar_Set("cl_packetdup", "2");
-#endif
-		} else {
-#ifdef USE_SACC
-			trap_Cvar_Set("cl_maxpackets", "20");
-			trap_Cvar_Set("cl_maxpackets", "2");
-#else
-			trap_Cvar_Set("cl_maxpackets", "15");
-			trap_Cvar_Set("cl_packetdup", "1");		// favor lower bandwidth
-#endif
+			trap_Cvar_Set("net_maxpackets", "62");
+			trap_Cvar_Set("net_packetdup", "1");		// favor less prediction errors when there's packet loss
 		}
  	} else if (Q_stricmp(name, "ui_GetName") == 0) {
 		trap_Cvar_Set( "ui_Name", UI_Cvar_VariableString("name"));

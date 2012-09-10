@@ -377,33 +377,26 @@ extern	cvar_t	*cl_nodelta;
 extern	cvar_t	*cl_debugMove;
 extern	cvar_t	*cl_noprint;
 extern	cvar_t	*cl_timegraph;
-extern	cvar_t	*cl_maxpackets;
-extern	cvar_t	*cl_packetdup;
 extern	cvar_t	*cl_shownet;
 extern	cvar_t	*cl_showSend;
 extern	cvar_t	*cl_timeNudge;
 extern	cvar_t	*cl_showTimeDelta;
 extern	cvar_t	*cl_freezeDemo;
-
 extern	cvar_t	*cl_yawspeed;
 extern	cvar_t	*cl_pitchspeed;
 extern	cvar_t	*cl_run;
 extern	cvar_t	*cl_anglespeedkey;
-
 extern	cvar_t	*cl_sensitivity;
 extern	cvar_t	*cl_freelook;
-
 extern	cvar_t	*cl_mouseAccel;
 extern	cvar_t	*cl_mouseAccelOffset;
 extern	cvar_t	*cl_mouseAccelStyle;
 extern	cvar_t	*cl_showMouseRate;
-
 extern	cvar_t	*m_pitch;
 extern	cvar_t	*m_yaw;
 extern	cvar_t	*m_forward;
 extern	cvar_t	*m_side;
 extern	cvar_t	*m_filter;
-
 extern	cvar_t	*j_pitch;
 extern	cvar_t	*j_yaw;
 extern	cvar_t	*j_forward;
@@ -414,18 +407,14 @@ extern	cvar_t	*j_yaw_axis;
 extern	cvar_t	*j_forward_axis;
 extern	cvar_t	*j_side_axis;
 extern	cvar_t	*j_up_axis;
-
 extern	cvar_t	*cl_timedemo;
 extern	cvar_t	*cl_aviFrameRate;
 extern	cvar_t	*cl_aviMotionJpeg;
-
 extern	cvar_t	*cl_activeAction;
-
 extern	cvar_t	*cl_allowDownload;
 extern  cvar_t  *cl_downloadMethod;
 extern	cvar_t	*cl_conXOffset;
 extern	cvar_t	*cl_inGameVideo;
-
 extern	cvar_t	*cl_lanForcePackets;
 extern	cvar_t	*cl_autoRecordDemo;
 extern  cvar_t  *cl_altTab;
@@ -643,6 +632,8 @@ qboolean CL_VideoRecording( void );
 // cl_main.c
 //
 void rate(char *, qboolean);
+void cl_maxpackets(char *, qboolean);
+void cl_packetdup(char *, qboolean);
 void CL_WriteDemoMessage ( msg_t *msg, int headerBytes );
 
 #ifdef URT_4_2
