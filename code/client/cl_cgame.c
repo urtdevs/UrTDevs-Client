@@ -515,28 +515,12 @@ intptr_t CL_CgameSystemCalls( intptr_t *args ) {
 		S_StartLocalSound( args[1], args[2] );
 		return 0;
 	case CG_S_CLEARLOOPINGSOUNDS:
-#ifdef USE_SOUNDHAX
-		if(s_envSoundEnable->integer > 0)
-			S_ClearLoopingSounds(args[1]);
-#endif
 		return 0;
 	case CG_S_ADDLOOPINGSOUND:
-#ifdef USE_SOUNDHAX
-		if(s_envSoundEnable->integer > 0)
-			S_AddLoopingSound( args[1], VMA(2), VMA(3), args[4] );
-#endif
 		return 0;
 	case CG_S_ADDREALLOOPINGSOUND:
-#ifdef USE_SOUNDHAX
-		if(s_envSoundEnable->integer > 0)
-			S_AddRealLoopingSound( args[1], VMA(2), VMA(3), args[4] );
-#endif
 		return 0;
 	case CG_S_STOPLOOPINGSOUND:
-#ifdef USE_SOUNDHAX
-		if(s_envSoundEnable->integer > 0)
-			S_StopLoopingSound( args[1] );
-#endif
 		return 0;
 	case CG_S_UPDATEENTITYPOSITION:
 		S_UpdateEntityPosition( args[1], VMA(2) );
@@ -547,10 +531,6 @@ intptr_t CL_CgameSystemCalls( intptr_t *args ) {
 	case CG_S_REGISTERSOUND:
 		return S_RegisterSound( VMA(1), args[2] );
 	case CG_S_STARTBACKGROUNDTRACK:
-#ifdef USE_SOUNDHAX
-		if(s_envSoundEnable->integer > 0)
-			S_StartBackgroundTrack( VMA(1), VMA(2) );
-#endif
 		return 0;
 	case CG_R_LOADWORLDMAP:
 		re.LoadWorld( VMA(1) );

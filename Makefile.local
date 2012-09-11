@@ -22,7 +22,7 @@ USE_VOIP=0
 USE_MUMBLE=1
 
 # Urban Terror 4.2 (set this to 0 for 4.1.x)
-URT_4_2=1
+URT_4_2=0
 #sacc hardcoded now set some sane defaults so we won't worrie about it
 
 # dmaHD HRTF Sound System by p5yc0runn3r

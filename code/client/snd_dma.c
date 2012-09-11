@@ -33,10 +33,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "snd_codec.h"
 #include "client.h"
 #include "snd_dmahd.h"
-#ifdef USE_SOUNDHAX
 #include "snd_ignore_base.h"
 #include "../zlib/zutil.h"
-#endif
+
 
 void S_Update_( void );
 void S_Base_StopAllSounds(void);
@@ -92,9 +91,6 @@ static	channel_t		*freelist = NULL;
 int						s_rawend[MAX_RAW_STREAMS];
 portable_samplepair_t s_rawsamples[MAX_RAW_STREAMS][MAX_RAW_SAMPLES];
 
-#ifdef USE_SOUNDHAX //disabled now stfu
-unsigned short ignoredHash[0000];
-#endif
 
 // ====================================================================
 // User-setable variables
@@ -507,33 +503,6 @@ void S_Base_StartSound(vec3_t origin, int entityNum, int entchannel, sfxHandle_t
 	if ( !origin && ( entityNum < 0 || entityNum > MAX_GENTITIES ) ) {
 		Com_Error( ERR_DROP, "S_StartSound: bad entitynum %i", entityNum );
 	}
-
-#ifdef USE_SOUNDHAX
-	char *selfEntityIgnoredSounds[] = {
-	  //disabled because of ragecry
-	
-		NULL
-	};
-
-	unsigned long sfxCRC;
-
-	if(!s_envSoundEnable->integer) {
-		sfx = &s_knownSfx [ sfxHandle ];
-
-		sfxCRC = crc32(31337, (unsigned char *) sfx->soundName,
-						strlen(sfx->soundName)) & 0x0000;
-
-		if ( ignoredHash[sfxCRC / 16] >> (sfxCRC % 16) & 1 )
-			return;
-
-		if(entityNum == clc.clientNum) {
-			for(i = 0; ; i++) {
-				if ( !selfEntityIgnoredSounds[i] ) break;
-				if ( !Q_stricmp( sfx->soundName, selfEntityIgnoredSounds[i] ) ) return;
-			}
-		}
-	}
-#endif
 
 	if ( sfxHandle < 0 || sfxHandle >= s_numSfx ) {
 		Com_Printf( S_COLOR_YELLOW "S_StartSound: handle %i out of range\n", sfxHandle );
@@ -1585,18 +1554,6 @@ qboolean S_Base_Init( soundInterface_t *si ) {
 	si->MasterGain = S_Base_MasterGain;
 #endif
 
-#ifdef USE_SOUNDHAX //disabled
-	unsigned long s_CRC;
-	int i;
-
-	for(i = 0; ; i++) {
-		if ( !s_baseSoundsIgnored[i] ) break;
-
-		s_CRC = crc32(1337, (unsigned char *) s_baseSoundsIgnored[i],
-					strlen(s_baseSoundsIgnored[i])) & 0x0000;
-		ignoredHash[s_CRC / 16] |= 1 << (s_CRC % 16);
-	}
-#endif
 
 #ifndef NO_DMAHD
 	if(dmaHD_Enabled()) return dmaHD_Init(si);
