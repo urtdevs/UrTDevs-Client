@@ -23,8 +23,6 @@ UrtDevs client v4.0 (ioquake3 svn 2306)
 * What you can expect to hear / not hear:
   dmaHD greatly enhances sound quality and precision, and also adds
   doppler effect to moving entities and projectiles. It is similar to ikalizer,
-  but is cross-platform. You will NOT hear your own player model breathe,
-  swim, or use med-kit!!! But you can hear friends/foes do all such things.
 
 *addional notes
 makefile currectly defaults to -O2 -mmx -msse -msse2 -msse3 if you'r pc is old and suck remove the *msse* and recompile
