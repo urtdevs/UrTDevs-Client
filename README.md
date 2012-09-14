@@ -12,12 +12,11 @@ UrtDevs client v4.0 (ioquake3 svn 2306)
 
   
 * Added cvars:
-  - com_nosplash [0|1]     -- enable/disable splash screen on client start
-                              (set this in your autoexec.cfg
-*New Networking settings for better performance and more hits
-   *net_maxpackets 30-125 (default 62) relates directly to frame rate if you get framerates BELOW, this value adjust it accordingly else if you get a consistent 90/125FPS you may increse it 
-   *net_packetdup  0-3    (default 1) setting it to 0 has been reported to improve things,but only if you have a PERFECT CONNECTION AND pingless then 50MS
-   *net_rate 25000-125000 (Bits persecond) (default 125000 has no effect on bandwith usage, bandwith useage IS Directly related to net_maxpackets and net_packetdup 
+  - ```com_nosplash [0|1]```     -- enable/disable splash screen on client start (set this in your autoexec.cfg)
+  - New Networking settings for better performance and more hits
+   ```*net_maxpackets [30-125]``` (default 62) relates directly to frame rate if you get framerates BELOW, this value adjust it accordingly else if you get a consistent 90/125FPS you may increase it.
+   ```*net_packetdup [0-3]``` (default 1) setting it to 0 has been reported to improve things, but only if you have a PERFECT CONNECTION AND pingless then 50MS
+   ```*net_rate [25000-125000]``` (Bits persecond) (default 125000) This has no effect on bandwith usage, bandwith usage IS directly related to net_maxpackets and net_packetdup 
 
    
 * What you can expect to hear / not hear:
@@ -25,7 +24,7 @@ UrtDevs client v4.0 (ioquake3 svn 2306)
   doppler effect to moving entities and projectiles. It is similar to ikalizer,
 
 *addional notes
-makefile currectly defaults to -O2 -mmx -msse -msse2 -msse3 if you'r pc is old and suck remove the *msse* and recompile
+makefile currectly defaults to ```-O2 -mmx -msse -msse2 -msse3``` if you'r pc is old and suck remove the *msse* and recompile
 * respect!
   - Pugbot and the community 
   - strata for doing most of the work 
