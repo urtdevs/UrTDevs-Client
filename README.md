@@ -13,10 +13,10 @@ UrtDevs client v4.0 (ioquake3 svn 2306)
   
 * Added cvars:
   - ```com_nosplash [0|1]```     -- enable/disable splash screen on client start (set this in your autoexec.cfg)
-  - New Networking settings for better performance and more hits
-   ```*net_maxpackets [30-125]``` (default 62) relates directly to frame rate if you get framerates BELOW, this value adjust it accordingly else if you get a consistent 90/125FPS you may increase it.
-   ```*net_packetdup [0-3]``` (default 1) setting it to 0 has been reported to improve things, but only if you have a PERFECT CONNECTION AND pingless then 50MS
-   ```*net_rate [25000-125000]``` (Bits persecond) (default 125000) This has no effect on bandwith usage, bandwith usage IS directly related to net_maxpackets and net_packetdup 
+  - New Networking settings for better performance and more hits:
+   * ```*net_maxpackets [30-125]``` (default 62) relates directly to frame rate if you get framerates BELOW, this value adjust it accordingly else if you get a consistent 90/125FPS you may increase it.
+   * ```*net_packetdup [0-3]``` (default 1) setting it to 0 has been reported to improve things, but only if you have a PERFECT CONNECTION AND pingless then 50MS
+   * ```*net_rate [25000-125000]``` (Bits persecond) (default 125000) This has no effect on bandwith usage, bandwith usage IS directly related to net_maxpackets and net_packetdup 
 
    
 * What you can expect to hear / not hear:
