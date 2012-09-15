@@ -30,8 +30,8 @@ makefile currently defaults to ```-O2 -mmx -msse -msse2 -msse3``` if your pc is 
   - dmaHD: p5ych0runn3r of apd 
   
 ## Current maintainers of UrtDevs client
-  - [rjc862003] - terrible coder, village idiot, idea bank, maintainer
-  - slackin - sacc transparnet console and input leetness
-  - [kbar](fly) - website
-  - [SudoKing] - coder, maintainer, QVM
-  - [TheRick](therick) - server hosting and the occasional random banning 
+  - [rjc862003](https://github.com/rjc862003) - terrible coder, village idiot, idea bank, maintainer
+  - slackin - sacc, transparent console, and input leetness
+  - [kbar](https://github.com/fly) - website
+  - [SudoKing](https://github.com/sudoking) - coder, maintainer, QVM
+  - [TheRick](https://github.com/therick) - server hosting and the occasional random banning 
