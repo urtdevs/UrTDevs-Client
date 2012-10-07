@@ -229,11 +229,7 @@ typedef enum {
 	
 	// 1.32
 	G_FS_SEEK,
-#ifdef URT_4_2
-	G_NET_STRINGTOADR,
-	G_NET_SENDPACKET,
-	G_SYS_STARTPROCESS,
-#endif
+
 	BOTLIB_SETUP = 200,				// ( void );
 	BOTLIB_SHUTDOWN,				// ( void );
 	BOTLIB_LIBVAR_SET,
@@ -391,7 +387,15 @@ typedef enum {
 	BOTLIB_PC_LOAD_SOURCE,
 	BOTLIB_PC_FREE_SOURCE,
 	BOTLIB_PC_READ_TOKEN,
-	BOTLIB_PC_SOURCE_FILE_AND_LINE
+	BOTLIB_PC_SOURCE_FILE_AND_LINE,
+	
+#ifdef URT_4_2
+	G_NET_STRINGTOADR = 600,
+	G_NET_SENDPACKET,
+	G_SYS_STARTPROCESS,
+	G_AUTH_DROP_CLIENT
+#endif
+	
 } gameImport_t;
 
 
@@ -427,8 +431,9 @@ typedef enum {
 	// that is not recognized as a builtin function.
 	// The game can issue trap_argc() / trap_argv() commands to get the command
 	// and parameters.  Return qfalse if the game doesn't recognize it as a command.
-#ifdef URT_4_2
+	
 	BOTAI_START_FRAME,
+#ifdef URT_4_2
 	GAME_AUTHSERVER_HEARTBEAT,
 	GAME_AUTHSERVER_SHUTDOWN,
 	GAME_AUTHSERVER_PACKET,

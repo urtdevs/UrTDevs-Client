@@ -38,7 +38,7 @@ typedef struct {
 } uiClientState_t;
 
 typedef enum {
-	UI_ERROR,
+	UI_ERROR = 0,
 	UI_PRINT,
 	UI_MILLISECONDS,
 	UI_CVAR_SET,
@@ -124,6 +124,11 @@ typedef enum {
 	UI_LAN_GETSERVERPING,
 	UI_LAN_SERVERISVISIBLE,
 	UI_LAN_COMPARESERVERS,
+
+	// 1.32
+	UI_FS_SEEK,
+	UI_SET_PBCLSTATUS,
+	
 #ifdef URT_4_2
 	UI_NET_STRINGTOADR,
 	UI_Q_VSNPRINTF,
@@ -131,9 +136,6 @@ typedef enum {
 	UI_COPYSTRING,
 	UI_SYS_STARTPROCESS,
 #endif
-	// 1.32
-	UI_FS_SEEK,
-	UI_SET_PBCLSTATUS,
 
 	UI_MEMSET = 100,
 	UI_MEMCPY,
@@ -192,11 +194,11 @@ typedef enum {
 
 	UI_DRAW_CONNECT_SCREEN,
 //	void	UI_DrawConnectScreen( qboolean overlay );
-#ifdef URT_4_2
+	
 	UI_HASUNIQUECDKEY,
+#ifdef URT_4_2
+
 	UI_AUTHSERVER_PACKET,
-#else
-	UI_HASUNIQUECDKEY
 #endif
 // if !overlay, the background will be drawn, otherwise it will be
 // overlayed over whatever the cgame has drawn.
