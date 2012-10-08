@@ -308,8 +308,12 @@ typedef struct {
 	int			punkbuster;
 	int			g_humanplayers;
 	int			g_needpass;
-	int 			auth_enable;
+#ifdef URT_4_2
+	int 			auth;
 	int 			password;
+	char     modversion[MAX_NAME_LENGTH];
+#endif
+	
 } serverInfo_t;
 
 typedef struct {

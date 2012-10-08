@@ -2568,8 +2568,11 @@ void CL_InitServerInfo( serverInfo_t *server, netadr_t *address ) {
 	server->ping = -1;
 	server->game[0] = '\0';
 	server->gameType = 0;
-	server->auth_enable = 0;
+#ifdef URT_4_2
+	server->auth = 0;
 	server->password = 0;
+	server->modversion[0] = '\0';
+#endif
 	server->netType = 0;
 }
 
@@ -3870,8 +3873,11 @@ static void CL_SetServerInfo(serverInfo_t *server, const char *info, int ping) {
 			server->punkbuster = atoi(Info_ValueForKey(info, "punkbuster"));
 			server->g_humanplayers = atoi(Info_ValueForKey(info, "g_humanplayers"));
 			server->g_needpass = atoi(Info_ValueForKey(info, "g_needpass"));
-			server->auth_enable = atoi(Info_ValueForKey(info, "auth_enable"));
+#ifdef URT_4_2
+			server->auth = atoi(Info_ValueForKey(info, "auth"));
 			server->password = atoi(Info_ValueForKey(info, "password"));
+			Q_strncpyz(server->modversion,Info_ValueForKey(info,"modversion"), MAX_NAME_LENGTH);
+#endif
 		}
 		server->ping = ping;
 	}
@@ -4017,8 +4023,11 @@ void CL_ServerInfoPacket( netadr_t from, msg_t *msg ) {
 	cls.localServers[i].punkbuster = 0;
 	cls.localServers[i].g_humanplayers = 0;
 	cls.localServers[i].g_needpass = 0;
-	cls.localServers[i].auth_enable = 0;
+#ifdef URT_4_2
+	cls.localServers[i].auth = 0;
 	cls.localServers[i].password = 0;
+	cls.localServers[i].modversion[0] = '\0';
+#endif
 									 
 	Q_strncpyz( info, MSG_ReadString( msg ), MAX_INFO_STRING );
 	if (strlen(info)) {
