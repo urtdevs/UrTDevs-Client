@@ -255,9 +255,11 @@ PROTOCOL
 #ifdef URT_4_2
 #define	PROTOCOL_VERSION	71
 #define PROTOCOL_LEGACY_VERSION	68
+#define DEMO_PROTOCOL_VERSION   70
 #else
 #define PROTOCOL_VERSION    71
 #define PROTOCOL_LEGACY_VERSION 68
+#define DEMO_PROTOCOL_VERSION   68
 #endif
 
 // 1.31 - 67
@@ -738,7 +740,7 @@ void FS_Remove( const char *osPath );
 void FS_HomeRemove( const char *homePath );
 
 void	FS_FilenameCompletion( const char *dir, const char *ext,
-		qboolean stripExt, void(*callback)(const char *s), qboolean allowNonPureFilesOnDisk );
+		qboolean stripExt, void(*callback)(const char *s) );
 
 const char *FS_GetCurrentGameDir(void);
 qboolean FS_Which(const char *filename, void *searchPath);
@@ -751,21 +753,21 @@ Edit fields and command line history/completion
 ==============================================================
 */
 
-#define	MAX_EDIT_LINE	256
+#define MAX_EDIT_LINE   256
 typedef struct {
-	int		cursor;
-	int		scroll;
-	int		widthInChars;
-	char	buffer[MAX_EDIT_LINE];
+        int             cursor;
+        int             scroll;
+        int             widthInChars;
+        char    buffer[MAX_EDIT_LINE];
 } field_t;
 
 void Field_Clear( field_t *edit );
 void Field_AutoComplete( field_t *edit );
 void Field_CompleteKeyname( void );
 void Field_CompleteFilename( const char *dir,
-		const char *ext, qboolean stripExt, qboolean allowNonPureFilesOnDisk );
+                const char *ext, qboolean stripExt );
 void Field_CompleteCommand( char *cmd,
-		qboolean doCommands, qboolean doCvars );
+                qboolean doCommands, qboolean doCvars );
 
 /*
 ==============================================================

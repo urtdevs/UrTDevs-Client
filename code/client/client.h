@@ -293,6 +293,7 @@ typedef struct {
 } ping_t;
 
 typedef struct {
+  
 	netadr_t	adr;
 	char	  	hostName[MAX_NAME_LENGTH];
 	char	  	mapName[MAX_NAME_LENGTH];
@@ -318,6 +319,7 @@ typedef struct {
 
 typedef struct {
 	qboolean	cddialog;			// bring up the cd needed dialog next frame
+	 connstate_t     state;                          // connection status
 
 	// when the server clears the hunk, all of these must be restarted
 	qboolean	rendererStarted;
@@ -638,9 +640,7 @@ qboolean CL_VideoRecording( void );
 void rate(char *, qboolean);
 void cl_maxpackets(char *, qboolean);
 void cl_packetdup(char *, qboolean);
-void CL_WriteDemoMessage ( msg_t *msg, int headerBytes );
 
-#ifdef URT_4_2
+
 void Sys_StartProcess(char *, qboolean);
 void Sys_OpenURL(const char *, qboolean);
-#endif
