@@ -1180,7 +1180,7 @@ a client based on its rate settings
 ====================
 */
 
-#define UDPIP_HEADER_SIZE 28 //fix.me? possible revert to 48 needed futher testing required
+#define UDPIP_HEADER_SIZE 48 //fix.me? possible revert to 48 needed futher testing required
 #define UDPIP6_HEADER_SIZE 48
 
 int SV_RateMsec(client_t *client)
@@ -1191,16 +1191,16 @@ int SV_RateMsec(client_t *client)
 	messageSize = client->netchan.lastSentSize;
 	net_rate = client->net_rate;
 	if ( sv_maxRate->integer ) {
-		if ( sv_maxRate->integer < 125000 ) {
-			Cvar_Set( "sv_MaxRate", "125000" );
+		if ( sv_maxRate->integer < 25000 ) {
+			Cvar_Set( "sv_MaxRate", "2500" );
 		}
 		if ( sv_maxRate->integer < net_rate ) {
 			net_rate = sv_maxRate->integer;
 		}
 	}
 	if ( sv_minRate->integer ) {
-		if ( sv_minRate->integer < 10000 )
-			Cvar_Set( "sv_minRate", "10000" );
+		if ( sv_minRate->integer < 1000 )
+			Cvar_Set( "sv_minRate", "1000" );
 		if ( sv_minRate->integer > net_rate )
 			net_rate = sv_minRate->integer;
 	}
